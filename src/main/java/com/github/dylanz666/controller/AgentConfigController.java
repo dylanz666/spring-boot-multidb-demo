@@ -3,10 +3,7 @@ package com.github.dylanz666.controller;
 import com.github.dylanz666.domain.AgentConfig;
 import com.github.dylanz666.service.AgentConfigService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -23,5 +20,11 @@ public class AgentConfigController {
     @ResponseBody
     public Optional<AgentConfig> getAgentConfigById(@PathVariable(name = "id") String id) {
         return agentConfigService.findById(id);
+    }
+
+    @PostMapping("/agent/config")
+    @ResponseBody
+    public Optional<AgentConfig> save(@RequestBody AgentConfig agentConfig) {
+        return agentConfigService.saveAgentConfig(agentConfig);
     }
 }

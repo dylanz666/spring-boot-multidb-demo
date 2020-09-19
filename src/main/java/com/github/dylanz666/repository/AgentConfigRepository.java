@@ -1,8 +1,6 @@
 package com.github.dylanz666.repository;
 
 import com.github.dylanz666.domain.AgentConfig;
-import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
@@ -12,7 +10,8 @@ import java.util.Optional;
  * @since : 09/19/2020
  */
 @Repository
-public interface AgentConfigRepository extends MongoRepository<AgentConfig, String> {
-    @Query("{'_id':?0}")
-    Optional<AgentConfig> findById(String _id);
+public interface AgentConfigRepository {
+    Optional<AgentConfig> findById(String id);
+
+    Optional<AgentConfig> saveAgentConfig(AgentConfig agentConfig);
 }
